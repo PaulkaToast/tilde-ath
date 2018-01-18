@@ -24,7 +24,7 @@ string var = "hello";
 ~ATH
 ```
 var = 5;
-var = >hello;
+var = >hello=;
 ```
 
 ## Function Declaration
