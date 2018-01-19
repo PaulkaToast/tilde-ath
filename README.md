@@ -1,4 +1,7 @@
-# tilde-ath
+# tilde-ath 
+
+![build status](https://api.travis-ci.org/PaulkaToast/tilde-ath.svg?branch=master)
+
 Interpreter for the ~ATH programming language from homestuck 
 
 # Testing Instructions
