@@ -4,7 +4,7 @@ import re
 class Tokenizer:
     TOKEN_TYPES = [
         ("act",        r"\bACT\b"),
-        ("end",        r"\bTHIS\.DIE()\b"),
+        ("end",        r"\bTHIS\.DIE\(\);\b"),
         ("return",     r"\bAPPEARIFY\b"),
         ("execute",    r"\bEXECUTE\b"),
         ("loop",       r"~ATH"),
@@ -13,6 +13,7 @@ class Tokenizer:
         ("cbrac",      r"\}"),
         ("obrac",      r"\{"),
         ("dot",        r"\."),
+        ("cama",       r","),
         ("scolon",     r";"),
         ("print",      r"=>"),
         ("rop",        r"==|!=|>=|<="),
@@ -26,6 +27,8 @@ class Tokenizer:
 
     def __init__(self, code):
         self.code = code
+        self.linenos = 0
+        self.col = 0
 
     def tokenize_single_token(self):
         for itype, regex in Tokenizer.TOKEN_TYPES: 
@@ -40,14 +43,33 @@ class Tokenizer:
             if match:
                 value = match.group(1)
                 self.code = self.code[match.end():]
-                return Token(itype, value)
+                
+                position = (self.linenos, self.col)
+                self.col += match.end()
+
+                return Token(itype, value, position)
         raise RuntimeError('Could not match token to "{}"'.format(self.code))
+
+    def clear_whitespace(self):
+        num_to_remove = 0
+        for c in self.code:
+            if c == '\n':
+                self.col = 0
+                self.linenos += 1
+                num_to_remove += 1
+            elif c.isspace():
+                self.col += 1
+                num_to_remove += 1
+            else:
+                break
+        self.code = self.code[num_to_remove:]
 
     def tokenize(self):
         tokens = []
+        self.clear_whitespace()
         while self.code != "":
             tokens.append(self.tokenize_single_token())
-            self.code = self.code.strip()
+            self.clear_whitespace()
         return tokens
 
-Token = namedtuple('Token', ['itype', 'value'])
+Token = namedtuple('Token', ['itype', 'value', 'position'])

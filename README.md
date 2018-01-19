@@ -1,6 +1,11 @@
 # tilde-ath
 Interpreter for the ~ATH programming language from homestuck 
 
+# Testing Instructions
+```
+python -m unittest discover -s tests
+```
+
 # Examples
 
 ## Printing
