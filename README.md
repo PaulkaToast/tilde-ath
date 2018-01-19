@@ -6,7 +6,7 @@ Interpreter for the ~ATH programming language from homestuck
 
 # Testing Instructions
 ```
-python -m unittest discover -s tests
+python -m pytest
 ```
 
 # Examples
