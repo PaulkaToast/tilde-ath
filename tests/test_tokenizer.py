@@ -183,5 +183,10 @@ THIS.DIE();
                     (13,14), (13,15), (14,0), (14,28), (14,31), (15,0),
                     (15,10)]
         self.check_tokenize(code, itype, value, position)
+    
+    def test_invalid_token(self):
+        code = "$ = 8"
 
-
+        with self.assertRaises(RuntimeError):
+            t = tokenizer.Tokenizer(code)
+            result = t.tokenize()
