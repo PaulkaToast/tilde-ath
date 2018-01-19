@@ -6,9 +6,17 @@
 
 Interpreter for the ~ATH programming language from homestuck 
 
+# Installation Instructions
+```
+pip install -r requirements.txt
+```
+
 # Testing Instructions
 ```
 python -m pytest
+
+// with coverage
+python -m pytest -v --cov ath --cov-report term-missing
 ```
 
 # Examples
