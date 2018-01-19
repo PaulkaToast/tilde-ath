@@ -4,7 +4,7 @@ import re
 class Tokenizer:
     TOKEN_TYPES = [
         ("act",        r"\bACT\b"),
-        ("end",        r"\bTHIS\.DIE\(\);\b"),
+        ("end",        r"\bTHIS\.DIE\(\)"),
         ("return",     r"\bAPPEARIFY\b"),
         ("execute",    r"\bEXECUTE\b"),
         ("loop",       r"~ATH"),
