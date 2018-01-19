@@ -1,6 +1,8 @@
 # tilde-ath 
 
 [![build status](https://api.travis-ci.org/PaulkaToast/tilde-ath.svg?branch=master)](https://travis-ci.org/PaulkaToast/tilde-ath)
+[![Coverage Status](https://coveralls.io/repos/github/PaulkaToast/tilde-ath/badge.svg?branch=master)](https://coveralls.io/github/PaulkaToast/tilde-ath?branch=master)
+
 
 Interpreter for the ~ATH programming language from homestuck 
 
