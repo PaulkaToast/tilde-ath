@@ -7,3 +7,6 @@ script:
   - python -m pytest -v --cov ath --cov-report term-missing
 after_success:
 - coveralls
+notifications:
+  email: false
+  
